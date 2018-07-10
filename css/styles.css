@@ -44,6 +44,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   #maincontent {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
   }
 
   #map-container {
@@ -301,6 +302,20 @@ nav h1 a {
   text-align: center;
   text-transform: uppercase;
 }
+
+@media screen and (min-width: 1200px) {
+  .inside #map-container {
+    width: 50vw;
+    height: auto;
+    display: flex;
+  }
+
+  .inside #restaurant-container {
+    width: 50vw;
+    margin-top: 135px;
+  }
+}
+
 #restaurant-name {
   color: #f18200;
   font-family: Arial,sans-serif;
