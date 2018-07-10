@@ -39,6 +39,19 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   background-color: #f3f3f3;
   min-height: 100%;
 }
+
+@media screen and (min-width: 1200px) {
+  #maincontent {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #map-container {
+    min-width: 50vw;
+    display: flex;
+  }
+}
+
 #footer {
   background-color: #444;
   color: #aaa;
@@ -116,27 +129,26 @@ nav h1 a {
 }
 /* ====================== Map ====================== */
 #map {
-  height: 400px;
+  min-height: 400px;
   width: 100%;
   background-color: #ccc;
 }
 
 @media screen and (min-width: 1200px) {
   #map {
-   height: 50vh;
+   min-height: 50vh;
   }
 }
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
   max-width: 100vw;
-  background-color: #3397DB;
+  background-color: #252831;
   align-items: center;
   padding: 15px;
 }
 
 @media screen and (min-width: 1200px) {
   .filter-options {
-    background-color: unset;
     height: 85px;
     align-items: center;
     display: flex;
@@ -205,10 +217,14 @@ nav h1 a {
   }
 }
 
+
 @media screen and (min-width: 1200px) {
-  #restaurants-list li {
-    flex: 0 0 25%;
-    max-width: 22%;
+  #restaurants-list {
+    height: calc(100vh - 85px);
+    overflow: scroll;
+  }
+  #restaurants-list .restaurant-img {
+    min-height: none;
   }
 }
 
