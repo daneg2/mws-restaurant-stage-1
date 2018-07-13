@@ -37,8 +37,19 @@ self.addEventListener('install', function(event) {
 self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request).then(function(response){
-          
-            return response || fetch(event.request);
+            
+            if (response !== undefined) {
+                return response;
+            } else {
+                return fetch(event.request).then(function (cache) {
+                    console.log(response);
+                    var responseClone = response.clone();
+                    caches.open(cacheName).then(function (cache) {
+                        cache.put(event.request, responseClone);
+                    })
+                    return response;
+                })
+            }
         })
-    );
+    )
 });
