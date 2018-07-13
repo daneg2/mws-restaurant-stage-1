@@ -315,7 +315,7 @@ nav h1 a {
  padding: 20px;
 }
 
-#reviews-container h2 {
+#reviews-container h3 {
   color: #f58500;
   font-size: 24pt;
   font-weight: 300;
@@ -491,7 +491,7 @@ nav h1 a {
     max-width: 28%;
   }
 
-  #reviews-container h2 {
+  #reviews-container h3 {
     text-align: center;
   }
 
