@@ -1,5 +1,5 @@
 //name of cache and urls to be cached
-var cacheName = 'cache-v3';
+var cacheName = 'cache-v1';
 var urlsToCache = [
   '/',
   '/css/styles.css',
@@ -35,26 +35,10 @@ self.addEventListener('install', function(event) {
 
 //if find what need in cache, return
 self.addEventListener('fetch', function(event) {
-  console.log('found what need');
     event.respondWith(
         caches.match(event.request).then(function(response){
           
             return response || fetch(event.request);
         })
     );
-});
-
-self.addEventListener('activate', function(event) {
-  var cacheWhitelist = ['cache-v3'];
-
-  event.waitUntil(
-    caches.keys().then(function(cacheNames) {
-      return Promise.all(
-        cacheNames.map(function(cacheName) {
-        if (cacheWhitelist.indexOf(cacheName) === -1) {
-          return caches.delete(cacheName);
-        }
-      }));
-    })
-  );
 });
