@@ -41,14 +41,17 @@ self.addEventListener('fetch', function(event) {
             if (response !== undefined) {
                 return response;
             } else {
-                return fetch(event.request).then(function (cache) {
-                    console.log(response);
-                    var responseClone = response.clone();
+                return fetch(event.request)
+                .then(function (uncachedResponse) {
+                    var uncachedClone = uncachedResponse.clone();
                     caches.open(cacheName).then(function (cache) {
-                        cache.put(event.request, responseClone);
+                        cache.put(event.request, uncachedClone);
                     })
-                    return response;
+                    return uncachedResponse;
                 })
+                .catch( function(err) {
+                    console.warn("Offline fetch not possible!")
+                });
             }
         })
     )
